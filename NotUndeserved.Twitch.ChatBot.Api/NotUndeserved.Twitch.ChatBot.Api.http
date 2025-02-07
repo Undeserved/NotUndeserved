@@ -1,0 +1,6 @@
+@NotUndeserved.Twitch.ChatBot.Api_HostAddress = http://localhost:5183
+
+GET {{NotUndeserved.Twitch.ChatBot.Api_HostAddress}}/Chatbot/
+Accept: application/json
+
+###

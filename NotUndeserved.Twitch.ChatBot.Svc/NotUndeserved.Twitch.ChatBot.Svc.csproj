@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NotUndeserved.Twitch.ChatBot.Application\NotUndeserved.Twitch.ChatBot.Application.csproj" />
+    <ProjectReference Include="..\NotUndeserved.Twitch.ChatBot.Infrastructure\NotUndeserved.Twitch.ChatBot.Infrastructure.csproj" />
+    <ProjectReference Include="..\NotUndeserved.Twitch.ChatBot.Persistence\NotUndeserved.Twitch.ChatBot.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
