@@ -23,6 +23,7 @@ namespace NotUndeserved.Twitch.ChatBot.Infrastructure
             services.AddSingleton<ITwitchClient, TwitchClient>(x => {
                 ITwitchApiSettingsService chatBotSettings = x.GetRequiredService<ITwitchApiSettingsService>();
                 chatBotSettings.LoadConfig();
+                ITwitchApiService apiService = x.GetRequiredService<ITwitchApiService>();
                 ConnectionCredentials credentials = new ConnectionCredentials(chatBotSettings.TwitchAccount, chatBotSettings.OAuthToken);
                 ClientOptions clientOptions = new ClientOptions {
                     MessagesAllowedInPeriod = 600,
@@ -56,7 +57,7 @@ namespace NotUndeserved.Twitch.ChatBot.Infrastructure
             services.AddSingleton<ITwitchApiSettingsService, TwitchApiSettingsService>();
 
             //Api service
-            services.AddSingleton<ITwitchApiService, TwitchApiService>();
+            services.AddSingleton<ITwitchApiService, TwitchApiService>();            
 
             return services;
         }

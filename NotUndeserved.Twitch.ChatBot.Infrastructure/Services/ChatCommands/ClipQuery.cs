@@ -13,7 +13,11 @@ namespace NotUndeserved.Twitch.ChatBot.Infrastructure.Services.ChatCommands {
             CommandRegexPattern = "^clipquery( |$)";
         }
 
-        public override async Task<string> ExecuteCommand(OnChatCommandReceivedArgs chatCommandReceivedArgs) {            
+        public override async Task<string> ExecuteCommand(OnChatCommandReceivedArgs chatCommandReceivedArgs) {    
+            if(!(chatCommandReceivedArgs.Command.ChatMessage.IsBroadcaster  || chatCommandReceivedArgs.Command.ChatMessage.IsModerator)) {
+                return null;
+            }
+
             string gameName = chatCommandReceivedArgs.Command.ArgumentsAsString;
             if (string.IsNullOrEmpty(gameName)) {
                 return ErrorMessageRes.EmptyQuery;

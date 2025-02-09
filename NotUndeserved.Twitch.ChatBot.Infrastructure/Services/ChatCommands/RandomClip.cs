@@ -19,6 +19,10 @@ namespace NotUndeserved.Twitch.ChatBot.Infrastructure.Services.ChatCommands {
         }
 
         public async override Task<string> ExecuteCommand(OnChatCommandReceivedArgs chatCommandReceivedArgs) {
+            if (!(chatCommandReceivedArgs.Command.ChatMessage.IsBroadcaster || chatCommandReceivedArgs.Command.ChatMessage.IsModerator)) {
+                return null;
+            }
+
             string targetChannel = chatCommandReceivedArgs.Command.ArgumentsAsString;
             if (string.IsNullOrEmpty(targetChannel)) {
                 return ErrorMessageRes.EmptyQuery;

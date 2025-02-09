@@ -10,5 +10,6 @@ namespace NotUndeserved.Twitch.ChatBot.Infrastructure.Resources {
         public const string NoMatchingRecordsFound = $"No matching records found. {ErrorMessageEmote}";
         public const string EmptyQuery = $"The query must include at least one (1) non-null argument. {ErrorMessageEmote}";
         public const string FormatError = $"Unexpected format. {ErrorMessageEmote}";
+        public const string UnauthorizedAccess = $"Unauthorized access. {ErrorMessageEmote}";
     }
 }
