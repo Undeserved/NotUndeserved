@@ -47,6 +47,7 @@ namespace NotUndeserved.Twitch.ChatBot.Infrastructure
 
             //IRC services
             services.AddSingleton<QuoteScanner>();
+            services.AddSingleton<MessageSanitiser>();
             services.AddSingleton<TwitchChatService>();
 
             return services;

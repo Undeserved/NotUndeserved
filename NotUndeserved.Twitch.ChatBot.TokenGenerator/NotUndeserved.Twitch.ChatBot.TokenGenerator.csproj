@@ -8,7 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
     <PackageReference Include="TwitchLib.Api" Version="3.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NotUndeserved.Twitch.ChatBot.Application\NotUndeserved.Twitch.ChatBot.Application.csproj" />
+    <ProjectReference Include="..\NotUndeserved.Twitch.ChatBot.Persistence\NotUndeserved.Twitch.ChatBot.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

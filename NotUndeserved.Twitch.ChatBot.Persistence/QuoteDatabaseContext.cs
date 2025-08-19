@@ -13,6 +13,7 @@ namespace NotUndeserved.Twitch.ChatBot.Persistence {
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<QuoteLog> QuoteLogs { get; set; }
         public DbSet<TwitchApiSettings> Settings { get; set; }
+        public DbSet<WordReplacement> WordReplacement { get; set; }
 
         public QuoteDatabaseContext(DbContextOptions<QuoteDatabaseContext> options) 
             : base(options) {

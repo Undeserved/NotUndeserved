@@ -13,6 +13,7 @@ namespace NotUndeserved.Twitch.ChatBot.Application.Common.Interfaces {
         DbSet<Quote> Quotes {  get; set; }
         DbSet<QuoteLog> QuoteLogs {  get; set; }
         DbSet<TwitchApiSettings> Settings {  get; set; }
+        DbSet<WordReplacement> WordReplacement { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

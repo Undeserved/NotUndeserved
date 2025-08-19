@@ -9,5 +9,6 @@ namespace NotUndeserved.Twitch.ChatBot.Application.Common.Interfaces {
     public interface ITwitchApiService {
         Task<ClipDto> GetClip(string Game, DateTime? From = null, DateTime? To = null);
         Task<ClipDto> GetRandomClip(string Broadcaster);
+        Task<List<ClipDto>> GetClipsByGame(string Game);
     }
 }

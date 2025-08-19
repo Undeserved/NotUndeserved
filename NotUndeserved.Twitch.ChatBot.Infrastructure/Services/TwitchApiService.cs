@@ -5,6 +5,7 @@ using NotUndeserved.Twitch.ChatBot.Application.Common.Interfaces;
 using TwitchLib.Api.Interfaces;
 using NotUndeserved.Twitch.ChatBot.Application.Common.Dtos;
 using TwitchLib.Api;
+using System.Security.Cryptography.X509Certificates;
 
 namespace NotUndeserved.Twitch.ChatBot.Infrastructure.Services
 {
@@ -70,6 +71,22 @@ namespace NotUndeserved.Twitch.ChatBot.Infrastructure.Services
                 Game = string.Empty,
                 ClipUrl = clipUrl
             };
+        }
+
+        public async Task<List<ClipDto>> GetClipsByGame(string Game) {
+            RefreshToken();
+            Game? gameInfo = await GetGameInfo(Game.Trim());
+
+            if (gameInfo != null) {
+                GetClipsResponse response = await _twitchApi.Helix.Clips.GetClipsAsync(gameId: gameInfo.Id,
+                        first: 100);
+                return response.Clips.Select(x=> new ClipDto{
+                    Broadcaster = x.BroadcasterName,
+                    Game = gameInfo.Name,
+                    ClipUrl = x.Url
+                }).ToList();
+            }
+            return new List<ClipDto>();
         }
 
         private async Task<Game> GetGameInfo(string GameName) {

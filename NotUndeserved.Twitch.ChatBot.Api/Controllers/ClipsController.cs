@@ -14,5 +14,11 @@ namespace NotUndeserved.Twitch.ChatBot.Api.Controllers {
         public async Task<ActionResult<IEnumerable<string>>> GetClip(string? Game) {
             return Ok(await Mediator.Send(new GetClipByParamsQuery { Game = Game }));
         }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<string>>> GetClipsByGame(string? Game) {
+            return Ok(await Mediator.Send(new GetClipsByGameQuery { Game = Game }));
+        }
     }
 }
